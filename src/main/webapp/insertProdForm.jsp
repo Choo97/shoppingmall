@@ -111,17 +111,9 @@ body {
 
 					<div class="mb-3">
 						<label for="imageurl">상품이미지</label> <input type="file"
-							class="form-control" name="imageurl">
+							class="form-control" name="imageurl" accept="image/*">
 						<div class="invalid-feedback">상품설명을 입력해주세요.</div>
 					</div>
-
-					<!-- <div class="row">
-                  <div class="col-md-6 mb-3">
-                     <label for="num">상품고유번호</label> <input type="text"
-                        class="form-control" name="num">
-                     <div class="invalid-feedback">상품고유번호를 입력하세요.</div>
-                  </div>
-               </div> -->
 
 					<input type="reset" value="초기화" /> <input type="submit" value="저장" />
 					<footer class="my-3 text-center text-small">
@@ -129,17 +121,6 @@ body {
 					</footer>
 			</div>
 
-			<!-- <tr><td>제조사</td><td><input type="text" name="maker"/></td></tr> -->
-			<!-- <tr><td>상품명</td><td><input type="text" name="prodname"/></td></tr> -->
-			<!-- <tr><td>상품설명</td><td><input type="text" name="discrip"/></td></tr> -->
-			<!-- <tr><td>재고수량</td><td><input type="text" name="amount"/></td></tr> -->
-			<!-- <tr><td>가격</td><td><input type="text" name="price"/></td></tr> -->
-			<!-- <tr><td>카테고리</td><td><input type="text" name="cateno"/></td></tr> -->
-			<!-- <tr><td>상품이미지</td><td><input type="file" name="imageurl"/></td></tr> -->
-			<!-- <tr><td>고유번호</td><td><input type="text" name="num"/></td></tr> -->
-			<!-- <tr><td><input type="reset" value="초기화"/> -->
-			<!-- <input type="submit" value="저장"/></td></tr> -->
-			<!-- </table> -->
 			</form>
 </body>
 </html>

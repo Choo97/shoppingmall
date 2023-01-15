@@ -113,9 +113,14 @@ body>header>nav {
 		white-space: nowrap;
 		-webkit-overflow-scrolling: touch;
 	}
-	body>main>div.main_story>div>a {
+	body>main>div.main_story>div a {
 		text-decoration: none;
 	}
+	
+	body > main > div.main-campaign > a {
+		text-decoration: none;
+	}
+
 }
 </style>
 
@@ -335,9 +340,9 @@ body>header>nav {
 
 		<div class="main-campaign">
 			<h2 class="main_tit">SILKY STAY FOUNDATION</h2>
+			<a href="#">
 			<div class="img" style="text-align: center;">
 				<img
-					onclick="javascript:location.href='http://localhost:8080/Project/promo.jsp';"
 					src="https://www.hera.com/kr/ko/layout/main/campaign/__icsFiles/afieldfile/2022/05/27/20220531_final_main_campaign_img_pc.jpg"
 					alt="Silky skin that stays with you all day"
 					style='cursor: pointer;'>
@@ -347,12 +352,13 @@ body>header>nav {
 					src="https://www.hera.com/kr/ko/resource/image/main/main_sub_arrow.png"
 					alt="">
 			</p>
+			</a>
 		</div>
 
 		<div class="main_story">
 			<div class="inner">
 				<h2 class="main_tit">NEW SENSUAL NUDE BALM &amp; GLOSS</h2>
-				<a href="/kr/ko/hera-story/library/sensual-nude-balm-story.html"
+				<a href="#"
 					class="img_link" ap-click-area="Main"
 					ap-click-name="Click - Product Lineup"
 					ap-click-data="NEW SENSUAL NUDE BALM &amp; GLOSS">
@@ -372,7 +378,7 @@ body>header>nav {
 						<h2 class="main_tit">BEST</h2>
 						<ul>
 							<li><a
-								href="/kr/ko/products/sensual-powder-matte-liquid.html"
+								href="#"
 								ap-click-area="Main" ap-click-name="Click - Product Lineup"
 								ap-click-data="SENSUAL POWDER MATTE LIQUID"> <img
 									src="https://www.hera.com/kr/ko/products/__icsFiles/afieldfile/2022/02/23/20220221_Sensual-Powder-Matte-Liquid_145_pdp_thumb_mo.png"
@@ -381,7 +387,7 @@ body>header>nav {
 									<p>자세히 보기 &gt;</p>
 							</a></li>
 							<li><a
-								href="/kr/ko/products/silky-stay-24h-longwear-foundation.html"
+								href="#"
 								ap-click-area="Main" ap-click-name="Click - Product Lineup"
 								ap-click-data="SILKY STAY 24H LONGWEAR SPF 20/ PA++"> <img
 									src="https://www.hera.com/kr/ko/products/__icsFiles/afieldfile/2022/04/27/20220422_final_SILKY-STAY-FOUNDATION_thumbnail07_21N1_pc.jpg"
@@ -394,7 +400,7 @@ body>header>nav {
 					<div class="main_new_wrap">
 						<h2 class="main_tit">NEW</h2>
 						<ul>
-							<li><a href="/kr/ko/products/sensual-fitting-glow-tint.html"
+							<li><a href="#"
 								ap-click-area="Main" ap-click-name="Click - Product Lineup"
 								ap-click-data="SENSUAL FITTING GLOW TINT"> <img
 									src="https://www.hera.com/kr/ko/products/__icsFiles/afieldfile/2022/05/18/20220531_final_Sensual-Fitting-Glow-Tint_pdp_thumbnail01_pc.jpg"
@@ -402,7 +408,7 @@ body>header>nav {
 									<h3>센슈얼 피팅 글로우 틴트</h3>
 									<p>자세히 보기 &gt;</p>
 							</a></li>
-							<li><a href="/kr/ko/products/uv-protector-tone-up.html"
+							<li><a href="#"
 								ap-click-area="Main" ap-click-name="Click - Product Lineup"
 								ap-click-data="HERA UV PROTECTOR TONE-UP SPF50+ / PA++++"> <img
 									src="https://www.hera.com/kr/ko/products/__icsFiles/afieldfile/2022/02/10/20220210_final_hera-uv-protector-tone_up_pdp_thumb.png"
