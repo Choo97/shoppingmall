@@ -1,4 +1,4 @@
-<%@page import="jdbc.*"%>
+<%@page import="prod.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,15 +10,16 @@
 <link href="./css/productBuy.css" rel="stylesheet">
 </head>
 <body>
+<jsp:include page="navbar.jsp" flush="true"/>
 <%
 int pnum = Integer.parseInt(request.getParameter("num"));
-Dao pd = Dao.getInstance();
-Product prod = pd.selectProduct(pnum);
+ProdDAO pd = ProdDAO.getInstance();
+ProdDTO prod = pd.selectProduct(pnum);
 %>
 
 <div class="wrap container">
 	<div class="main_content">
-		<img class="img" alt="이미지영역" src="/Fighting/img/<%= prod.getImageUrl() %>">
+		<img class="img" alt="이미지영역" src=".\imgs\<%=prod.getFileName()%>">
 		<div class="wrap_Name_Maker h2">
 			<div class="prodName">제품이름: <%= prod.getProdName() %></div>
 			<div class="prodMaker">제조사 : <%= prod.getMaker() %></div>
@@ -32,6 +33,7 @@ Product prod = pd.selectProduct(pnum);
 		
 	</div>
 </div>
+<jsp:include page="footer.jsp" flush="true"/>
 
 <!-- <form action="updateEmp.jsp" method="post"> -->
 <!-- 	<table border="1"> -->

@@ -1,4 +1,4 @@
-package jdbc;
+package prod;
 
 import java.io.FileReader;
 import java.net.URLDecoder;
@@ -11,24 +11,24 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-public class Dao {
+public class ProdDAO {
 	private Connection conn = getConnect();
 	
 //	싱글턴 패턴
-	private static Dao dao = new Dao();
+	private static ProdDAO dao = new ProdDAO();
 	
-	private Dao() { }
+	private ProdDAO() { }
 	
-	public static Dao getInstance() {
+	public static ProdDAO getInstance() {
 		return dao;
 	}
-public List<Product> lst;
+public List<ProdDTO> lst;
 	
 //	oracle데이터베이스에 접속
 	private Connection getConnect() {
 		try {
 			Properties prop = new Properties();
-			String path = Dao.class.getResource("db.properties")
+			String path = ProdDAO.class.getResource("db.properties")
 					.getPath();
 			
 			path = URLDecoder.decode(path, "utf-8");
@@ -49,9 +49,9 @@ public List<Product> lst;
 		return null;
 	}
 	
-	 public int insertProd(Product prod) {
-	      String sql = "insert into Prod(maker, prodname, discrip, amount, price, cateno, imageurl ) "
-	            + "values (?,?,?,?,?,?,?)";
+	 public int insertProd(ProdDTO prod) {
+	      String sql = "insert into Prod(maker, prodname, discrip, amount, price, cate, FileFullPath, FileName ) "
+	            + "values (?,?,?,?,?,?,?,?)";
 	      try {
 	         PreparedStatement pstm = conn.prepareStatement(sql);
 	         pstm.setString(1, prod.getMaker());
@@ -59,8 +59,9 @@ public List<Product> lst;
 	         pstm.setString(3, prod.getDiscrip());
 	         pstm.setInt(4, prod.getAmount());
 	         pstm.setInt(5, prod.getPrice());
-	         pstm.setInt(6, prod.getCateNo());
-	         pstm.setString(7, prod.getImageUrl());
+	         pstm.setString(6, prod.getCate());
+	         pstm.setString(7, prod.getFileFullPath());
+	         pstm.setString(8, prod.getFileName());
 	         //pstm.setInt(8, prod.getNum());
 	         int res = pstm.executeUpdate();
 	         pstm.close();
@@ -72,10 +73,8 @@ public List<Product> lst;
 	   }
 
 	
-	public List<Product> selectProdAll() {
-		
+	public List<ProdDTO> selectProdAll() {
 		lst = new ArrayList<>();
-		
 		String sql = "select * from prod";
 		
 		try {
@@ -88,12 +87,13 @@ public List<Product> lst;
 				String discrip = rs.getString("discrip");
 				int amount = rs.getInt("amount");
 				int price = rs.getInt("price");
-				int cateNo = rs.getInt("cateno");
+				String cate = rs.getString("cate");
 				int num = rs.getInt("num");
-				String imageUrl = rs.getString("imageurl");
+				String fileFullPath = rs.getString("fileFullPath");
+				String fileName = rs.getString("fileName");
 				
-				Product prod = new Product(maker, prodName, discrip,
-						amount, price, cateNo, num, imageUrl);
+				ProdDTO prod = new ProdDTO(maker, prodName, discrip,
+						amount, price, cate, num, fileFullPath, fileName);
 				lst.add(prod);
 				
 			}
@@ -107,11 +107,11 @@ public List<Product> lst;
 		return lst;
 	}
 	
-	public Product selectProduct(int num) {
+	public ProdDTO selectProduct(int num) {
 		String sql = "select maker, prodname, discrip, amount, "
-				+ " price, cateno, num, imageurl "
+				+ " price, cate, num, fileFullPath, fileName "
 				+ " from prod where num = ?";
-		Product prod = null;
+		ProdDTO prod = null;
 		try {
 			PreparedStatement pstm = conn.prepareStatement(sql);
 			pstm.setInt(1, num);
@@ -122,10 +122,11 @@ public List<Product> lst;
 				String discrip = rs.getString("discrip");
 				int amount = rs.getInt("amount");
 				int price = rs.getInt("price");
-				int cateno = rs.getInt("cateno");
+				String cate = rs.getString("cate");
 				int pnum = rs.getInt("num");
-				String imageurl = rs.getString("imageurl");
-				prod = new Product(maker, prodname, discrip, amount, price, cateno, pnum, imageurl);
+				String fileFullPath = rs.getString("fileFullPath");
+				String fileName = rs.getString("fileName");
+				prod = new ProdDTO(maker, prodname, discrip, amount, price, cate, pnum, fileFullPath, fileName);
 			}
 			rs.close();
 			pstm.close();
@@ -137,7 +138,7 @@ public List<Product> lst;
 	}
 	
 	public static void main(String[] args) {
-		Dao dao = getInstance();
+		ProdDAO dao = getInstance();
 		
 //		List<Product> plst = dao.selectProdAll();
 //		
@@ -145,7 +146,7 @@ public List<Product> lst;
 //			System.out.println(product);
 //		}
 		
-		Product prod = dao.selectProduct(1);
+		ProdDTO prod = dao.selectProduct(1);
 		System.out.println(prod);
 		
 	}

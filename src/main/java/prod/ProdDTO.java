@@ -1,38 +1,33 @@
-package jdbc;
+package prod;
 
-public class Product {
+public class ProdDTO {
 	private String maker;
 	private String prodName;
 	private String discrip;
 	private int amount;
 	private int price;
-	private int cateNo;
+	private String cate;
 	private int num;
-	private String imageUrl;
+	
+	String fileFullPath;
+	String fileName;
+	
+	public ProdDTO() { }
 
-	public Product(String maker, String prodName, String discrip, int amount, int price, int cateNo, int num,
-			String imageUrl) {
+	public ProdDTO(String maker, String prodName, String discrip, int amount, int price, String cate, int num,
+			String fileFullPath, String fileName) {
 		super();
 		this.maker = maker;
 		this.prodName = prodName;
 		this.discrip = discrip;
 		this.amount = amount;
 		this.price = price;
-		this.cateNo = cateNo;
+		this.cate = cate;
 		this.num = num;
-		this.imageUrl = imageUrl;
+		this.fileFullPath = fileFullPath;
+		this.fileName = fileName;
 	}
 
-	public Product(String maker, String prodName, String discrip, int amount, int price, int cateNo, int num) {
-		super();
-		this.maker = maker;
-		this.prodName = prodName;
-		this.discrip = discrip;
-		this.amount = amount;
-		this.price = price;
-		this.cateNo = cateNo;
-		this.num = num;
-	}
 
 	public String getMaker() {
 		return maker;
@@ -74,12 +69,12 @@ public class Product {
 		this.price = price;
 	}
 
-	public int getCateNo() {
-		return cateNo;
+	public String getCate() {
+		return cate;
 	}
 
-	public void setCateNo(int cateNo) {
-		this.cateNo = cateNo;
+	public void setCate(String cate) {
+		this.cate = cate;
 	}
 
 	public int getNum() {
@@ -90,18 +85,27 @@ public class Product {
 		this.num = num;
 	}
 
-	public String getImageUrl() {
-		return imageUrl;
+	public String getFileFullPath() {
+		return fileFullPath;
 	}
 
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
+	public void setFileFullPath(String fileFullPath) {
+		this.fileFullPath = fileFullPath;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
 	}
 
 	@Override
 	public String toString() {
-		return "Product [maker=" + maker + ", prodName=" + prodName + ", discrip=" + discrip + ", amount=" + amount
-				+ ", price=" + price + ", cateNo=" + cateNo + ", num=" + num + ", imageUrl=" + imageUrl + "]";
+		return "ProdDTO [maker=" + maker + ", prodName=" + prodName + ", discrip=" + discrip + ", amount=" + amount
+				+ ", price=" + price + ", cate=" + cate + ", num=" + num + ", fileFullPath=" + fileFullPath
+				+ ", fileName=" + fileName + "]";
 	}
 	
 }
