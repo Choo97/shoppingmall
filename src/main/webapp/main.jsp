@@ -10,9 +10,9 @@
 <meta name="generator" content="Hugo 0.108.0">
 <title>Main Page</title>
 
-<link href="./css/bootstrap.min.css" rel="stylesheet">
-<link href="./css/carousel.css" rel="stylesheet">
-<link href="./css/main.css" rel="stylesheet">
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/carousel.css" rel="stylesheet">
+<link href="/css/main.css" rel="stylesheet">
 <style>
 /*    font awesome cdn */
 @import
@@ -43,19 +43,6 @@
 .bi {
 	vertical-align: -.125em;
 	fill: currentColor;
-}
-
-/*     navbar */
-body>header>nav {
-	position: relative;
-	height: 80px;
-	opacity: 0.8;
-}
-
-#foot {
-	font-size: 26px;
-	color: rgba(169, 169, 169);
-	padding: 20px;
 }
 
 /*     Carousel 자세히 보기 버튼의 border*/
@@ -97,22 +84,7 @@ body>header>nav {
 	.bd-placeholder-img-lg {
 		font-size: 3.5rem;
 	}
-	.nav-scroller {
-		position: relative;
-		z-index: 2;
-		height: 2.75rem;
-		overflow-y: hidden;
-	}
-	.nav-scroller .nav {
-		display: flex;
-		flex-wrap: nowrap;
-		padding-bottom: 1rem;
-		margin-top: -1px;
-		overflow-x: auto;
-		text-align: center;
-		white-space: nowrap;
-		-webkit-overflow-scrolling: touch;
-	}
+	
 	body>main>div.main_story>div a {
 		text-decoration: none;
 	}
@@ -137,7 +109,7 @@ body>header>nav {
 	}
 	%>
 
-	<jsp:include page="navbar.jsp" flush="true"/>
+	<jsp:include page="/navbar.jsp" flush="true"/>
 
 	<main>
 
@@ -332,14 +304,14 @@ body>header>nav {
 			</div>
 		</div>
 
-		<jsp:include page="footer.jsp" flush="true"/>
+		<jsp:include page="/footer.jsp" flush="true"/>
 	</main>
 
 	<script
 		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
 		integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
 		crossorigin="anonymous"></script>
-	<script src="./js/bootstrap.bundle.min.js"></script>
+	<script src="/js/bootstrap.bundle.min.js"></script>
 
 
 </body>

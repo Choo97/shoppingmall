@@ -17,12 +17,12 @@ public class ProdDAO {
 //	싱글턴 패턴
 	private static ProdDAO dao = new ProdDAO();
 	
-	private ProdDAO() { }
-	
 	public static ProdDAO getInstance() {
 		return dao;
 	}
-public List<ProdDTO> lst;
+	
+	private ProdDAO() { }
+	public List<ProdDTO> lst;
 	
 //	oracle데이터베이스에 접속
 	private Connection getConnect() {
@@ -71,7 +71,82 @@ public List<ProdDTO> lst;
 	      }
 	      return 0;
 	   }
+	 
+	 public List<ProdDTO> selectProdCate(String inpcate) {
+			lst = new ArrayList<>();
+			String sql = "select * from prod where cate = ?";
+			
+			try {
+				PreparedStatement pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, inpcate);
+				ResultSet rs = pstmt.executeQuery();
+				while(rs.next()) {
+					
+					String maker = rs.getString("maker");
+					String prodName = rs.getString("prodname");
+					String discrip = rs.getString("discrip");
+					int amount = rs.getInt("amount");
+					int price = rs.getInt("price");
+					String cate = rs.getString("cate");
+					int num = rs.getInt("num");
+					String fileFullPath = rs.getString("fileFullPath");
+					String fileName = rs.getString("fileName");
+					
+					ProdDTO prod = new ProdDTO(maker, prodName, discrip,
+							amount, price, cate, num, fileFullPath, fileName);
+					lst.add(prod);
+					
+				}
+				pstmt.close();
+				rs.close();
+				return lst;
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return lst;
+		}
 
+	 public List<ProdDTO> selectProdDetailCate(String scanCate,String pName, int minPrice, int maxPrice) {
+		
+			lst = new ArrayList<>();
+			String sql = "select * from prod where cate = ? "
+					+ " and prodname like  '%' || ? || '%'"
+					+ " and price between ? and ?";
+			
+			try {
+				PreparedStatement pstm = conn.prepareStatement(sql);
+				pstm.setString(1, scanCate);
+				pstm.setString(2, pName);
+				pstm.setInt(3, minPrice);
+				pstm.setInt(4, maxPrice);
+				ResultSet rs = pstm.executeQuery();
+				while(rs.next()) {
+					
+					String maker = rs.getString("maker");
+					String prodName = rs.getString("prodname");
+					String discrip = rs.getString("discrip");
+					int amount = rs.getInt("amount");
+					int price = rs.getInt("price");
+					String cate = rs.getString("cate");
+					int num = rs.getInt("num");
+					String fileFullPath = rs.getString("fileFullPath");
+					String fileName = rs.getString("fileName");
+					
+					ProdDTO prod = new ProdDTO(maker, prodName, discrip,
+							amount, price, cate, num, fileFullPath, fileName);
+					lst.add(prod);
+					
+				}
+				pstm.close();
+				rs.close();
+				return lst;
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return lst;
+		}
 	
 	public List<ProdDTO> selectProdAll() {
 		lst = new ArrayList<>();
@@ -99,7 +174,7 @@ public List<ProdDTO> lst;
 			}
 			pstmt.close();
 			rs.close();
-			return lst;
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -137,17 +212,61 @@ public List<ProdDTO> lst;
 		return null;
 	}
 	
+	// getBoardList(startRow, pageSize)
+		public List getBoardList(int startRow, int pageSize){
+			List<ProdDTO> lst = new ArrayList<>();
+	        
+			try {
+				 
+//				sql = "select * from prod order by re_ref desc, re_seq asc limit ?,?";			
+				String sql = "";
+				
+				 PreparedStatement pstmt = conn.prepareStatement(sql);
+				
+				// ?
+				pstmt.setInt(1, startRow-1); //시작행-1 (시작 row 인덱스 번호)
+				pstmt.setInt(2, pageSize); // 페이지크기 (한번에 출력되는 수)
+				
+				// 4. sql 실행
+				ResultSet rs = pstmt.executeQuery();
+				// 5. 데이터처리 ( 글1개의 정보 -> DTO 1개에 담음 -> ArrayList 1칸 )
+				while(rs.next()) {
+					// 데이터가 있을때마다 글 1개의 정보를 저장하는 객체 생성
+					ProdDTO pdt = new ProdDTO();
+					
+					pdt.setMaker(rs.getString("maker"));
+					pdt.setProdName(rs.getString("prodname"));
+					pdt.setDiscrip(rs.getString("discrip"));
+					pdt.setAmount(rs.getInt("amount"));
+					pdt.setPrice(rs.getInt("price"));
+					pdt.setCate(rs.getString("cate"));
+					pdt.setNum(rs.getInt("num"));
+					pdt.setFileFullPath(rs.getString("filefullpath"));
+					pdt.setFileName(rs.getString("filename"));
+					
+					// DTO 객체를 ArrayList 한칸에 저장
+					lst.add(pdt);				
+				}
+				pstmt.close();
+				rs.close();
+				System.out.println("DAO : 글 정보 저장완료! "+lst.size());
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			} 		
+			return lst;
+		}	
+		// getBoardList(startRow, pageSize) 끝
+
 	public static void main(String[] args) {
 		ProdDAO dao = getInstance();
 		
-//		List<Product> plst = dao.selectProdAll();
-//		
-//		for (Product product : plst) {
-//			System.out.println(product);
-//		}
+		List<ProdDTO> prod = dao.selectProdDetailCate("스킨케어-마스크/팩", "마", 2000, 4000);
+		for (ProdDTO prodDTO : prod) {
+			System.out.println(prodDTO);
+			
+		}
 		
-		ProdDTO prod = dao.selectProduct(1);
-		System.out.println(prod);
 		
 	}
 }

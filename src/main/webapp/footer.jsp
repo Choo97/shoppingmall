@@ -5,6 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>footer</title>
+<style>
+#foot {
+	font-size: 26px;
+	color: rgba(169, 169, 169);
+	padding: 20px;
+}
+</style>
 </head>
 <body>
 <hr class="featurette-divider">
@@ -27,4 +34,5 @@
          </p>
       </footer>
 </body>
+
 </html>

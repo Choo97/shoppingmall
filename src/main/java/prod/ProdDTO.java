@@ -12,6 +12,13 @@ public class ProdDTO {
 	String fileFullPath;
 	String fileName;
 	
+//	싱글턴 패턴
+	private static ProdDTO dto = new ProdDTO();
+	
+	public static ProdDTO getInstance() {
+		return dto;
+	}
+	
 	public ProdDTO() { }
 
 	public ProdDTO(String maker, String prodName, String discrip, int amount, int price, String cate, int num,

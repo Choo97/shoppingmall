@@ -1,9 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="./css/main.css" rel="stylesheet">
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/main.css" rel="stylesheet">
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
+	<script
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+		integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+		crossorigin="anonymous"></script>
+	<script src="/js/bootstrap.bundle.min.js"></script>
+<style>
+	body > nav {
+	opacity: 0.8;
+	}
+	
+	@media ( min-width : 768px) {
+	.nav-scroller {
+		position: relative;
+		z-index: 2;
+		height: 2.75rem;
+		overflow-y: hidden;
+	}
+	.nav-scroller .nav {
+		display: flex;
+		flex-wrap: nowrap;
+		padding-bottom: 1rem;
+		margin-top: -1px;
+		overflow-x: auto;
+		text-align: center;
+		white-space: nowrap;
+		-webkit-overflow-scrolling: touch;
+	}
+	}
+</style>
 <title>navbar</title>
 
 	<%
@@ -16,7 +46,7 @@
 	<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark"
 		style="height: 80px; background: linear-gradient(307deg, #cdcfd1 4%, rgb(0 0 0) 88%, rgb(0, 0, 0) 100%);">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="main.jsp"
+			<a class="navbar-brand" href="/main.jsp"
 				style="font-size: 28px; margin-left: 305px; font-weight: bold;">H
 				E R A</a>
 			<button class="navbar-toggler" type="button"
@@ -44,10 +74,10 @@
 						style="color: white; font-size: 16px; font-weight: 600; margin-left: 27px">
 							메이크업 </a>
 						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="productList.jsp">페이스</a></li>
-							<li><a class="dropdown-item" href="productList.jsp">립</a></li>
+							<li><a class="dropdown-item" href="/category/makeup/face.jsp">페이스</a></li>
+							<li><a class="dropdown-item" href="/category/makeup/lips.jsp">립</a></li>
 							<!--             <li><hr class="dropdown-divider"></li> -->
-							<li><a class="dropdown-item" href="productList.jsp">아이</a></li>
+							<li><a class="dropdown-item" href="/category/makeup/eyes.jsp">아이</a></li>
 						</ul></li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" role="button"
@@ -55,10 +85,10 @@
 						style="color: white; font-size: 16px; font-weight: 600; margin-left: 27px">
 							스킨케어 </a>
 						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="productList.jsp">클렌징</a></li>
-							<li><a class="dropdown-item" href="productList.jsp">스킨/로션</a></li>
+							<li><a class="dropdown-item" href="/category/skincare/cleansing.jsp">클렌징</a></li>
+							<li><a class="dropdown-item" href="/category/skincare/skin-lotion.jsp">스킨/로션</a></li>
 							<!--             <li><hr class="dropdown-divider"></li> -->
-							<li><a class="dropdown-item" href="productList.jsp">마스크/팩</a></li>
+							<li><a class="dropdown-item" href="/category/skincare/mask-pack.jsp">마스크/팩</a></li>
 						</ul></li>
 					<li class="nav-item"><a class="nav-link active" href="#"
 						style="font-size: 16px; font-weight: 600; margin-left: 27px">고객센터</a>
@@ -67,8 +97,12 @@
 					if (userID != null && userID.equals("admin")) {
 					%>
 					<li class="nav-item"><a class="nav-link active"
-						href="./uploadProdForm.jsp"
+						href="/uploadProdForm.jsp"
 						style="font-size: 16px; font-weight: 600; margin-left: 27px">상품등록</a>
+					</li>
+					<li class="nav-item"><a class="nav-link active"
+						href="#"
+						style="font-size: 16px; font-weight: 600; margin-left: 27px">상품삭제</a>
 					</li>
 					<%
 					}
@@ -101,3 +135,9 @@
 			</div>
 		</div>
 	</nav>
+	<script
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+		integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+		crossorigin="anonymous"></script>
+	<script src="/js/bootstrap.bundle.min.js"></script>
+
